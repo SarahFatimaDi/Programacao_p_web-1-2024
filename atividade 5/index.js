@@ -21,11 +21,10 @@ app.get('/remover/:id/', function(req, res){
     res.send(id);
 });
 
-app.get('/atualizar/:id/:novoNome/:novaQtd', function(req, res){
+app.get('/atualizar/:id/:novaQtd', function(req, res){
     let id = req.params.id;
-    let novoNome = req.params.novoNome;
     let novaQtd = req.params.novaQtd;
-    estoque.atualizarProduto(id, novoNome, novaQtd);
+    estoque.atualizarProduto(id, novaQtd);
     res.send('Produto atualizado com sucesso!');
 });
 
