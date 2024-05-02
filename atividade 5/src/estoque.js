@@ -23,10 +23,9 @@ function removerProduto(id){
     }); //função para remover o produto da lista. Funciona da seguinte fomra: faz um filtro que vai passar por toda a lista pegando como referência o id. Se o id que "estou olhando" for diferente do id que eu quero retirar, então ele "passa na peneira" e segue a vida, se for igual, então faço a remoção.
 }
 
-function atualizarProduto(id, novoNome, novaQtd){
+function atualizarProduto(id, novaQtd){
     for(let i = 0; i < produtos.length; i++){
         if(produtos[i].id == id){
-            produtos[i].nome = novoNome;
             produtos[i].qtd = novaQtd;
             console.log('Produto atualizado com sucesso: ' + produtos[i]);
             return;
