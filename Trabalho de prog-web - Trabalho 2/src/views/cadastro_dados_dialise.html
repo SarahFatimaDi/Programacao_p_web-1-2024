@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Filtros da Vida</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>        
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h1 class="text-center">Cadastro dos dados da diálise do paciente</h1>
+                    <form action="../model/dados_paciente_dialise.js" method="post">
+                        <div class="mb-3">
+                            <label for="dialisador" class="form-label">Dialisador:</label>
+                            <input type="text" class="form-control" id="dialisador" name="dialisador" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="heparina" class="form-label">Heparina:</label>
+                            <input type="text" class="form-control" id="heparina" name="heparina" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="bicarbonato" class="form-label">Bicarbonato:</label>
+                            <input type="text" class="form-control" id="bicarbonato" name="bicarbonato" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="prime" class="form-label">Prime:</label>
+                            <input type="text" class="form-control" id="prime" name="prime" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipo_acesso" class="form-label">Tipo de acesso:</label>
+                            <input type="text" class="form-control" id="tipo_acesso" name="tipo_acesso" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="agulha" class="form-label">Calibre da agulha:</label>
+                            <input type="text" class="form-control" id="agulha" name="agulha" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fluxo_do_sangue" class="form-label">Fluxo do Sangue:</label>
+                            <input type="text" class="form-control" id="fluxo_do_sangue" name="fluxo_do_sangue" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sodio" class="form-label">Sódio:</label>
+                            <input type="text" class="form-control" id="sodio" name="sodio" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="peso_seco" class="form-label">Peso Seco:</label>
+                            <input type="text" class="form-control" id="peso_seco" name="peso_seco" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="duracao" class="form-label">Duração:</label>
+                            <input type="text" class="form-control" id="duracao" name="duracao" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="uf_maxima" class="form-label">UF Máxima:</label>
+                            <input type="text" class="form-control" id="uf_maxima" name="uf_maxima" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="perfil_de_uf" class="form-label">Perfil de UF:</label>
+                            <input type="text" class="form-control" id="perfil_de_uf" name="perfil_de_uf" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

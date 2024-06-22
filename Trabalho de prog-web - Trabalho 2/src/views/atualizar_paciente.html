@@ -1,0 +1,120 @@
+<!-- atualizar_paciente.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Paciente</title>
+</head>
+<body>
+    <h1>Atualizar Paciente</h1>
+    <form id="formAtualizarPaciente">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="convenio">Convênio:</label>
+        <input type="text" id="convenio" name="convenio" required><br><br>
+
+        <label for="cns">CNS:</label>
+        <input type="text" id="cns" name="cns" required><br><br>
+
+        <label for="data_nascimento">Data de Nascimento:</label>
+        <input type="date" id="data_nascimento" name="data_nascimento" required><br><br>
+
+        <label for="altura">Altura:</label>
+        <input type="number" id="altura" name="altura" step="0.01" required><br><br>
+
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" name="sexo" required>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+        </select><br><br>
+
+        <label for="tipo_sang">Tipo Sanguíneo:</label>
+        <input type="text" id="tipo_sang" name="tipo_sang" required><br><br>
+
+        <label for="diabetes">Diabetes:</label>
+        <input type="text" id="diabetes" name="diabetes" required><br><br>
+
+        <label for="tipo_tratamento">Tipo de Tratamento:</label>
+        <input type="text" id="tipo_tratamento" name="tipo_tratamento" required><br><br>
+
+        <label for="cid">CID:</label>
+        <input type="text" id="cid" name="cid" required><br><br>
+
+        <label for="data_inicio_trat">Data de Início do Tratamento:</label>
+        <input type="date" id="data_inicio_trat" name="data_inicio_trat" required><br><br>
+
+        <label for="data_primeira_dialise_vida">Data da Primeira Diálise na Vida:</label>
+        <input type="date" id="data_primeira_dialise_vida" name="data_primeira_dialise_vida" required><br><br>
+
+        <label for="escala">Escala:</label>
+        <input type="text" id="escala" name="escala" required><br><br>
+
+        <label for="turno_local">Turno Local:</label>
+        <input type="text" id="turno_local" name="turno_local" required><br><br>
+
+        <button type="submit">Atualizar</button>
+    </form>
+
+    <script>
+        // Função para carregar os dados do paciente
+        async function carregarDadosPaciente() {
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const pacienteId = urlParams.get('id');
+
+                const response = await fetch(`/buscar_paciente/${pacienteId}`);
+                const paciente = await response.json();
+
+                document.getElementById('nome').value = paciente.nome;
+                document.getElementById('convenio').value = paciente.convenio;
+                document.getElementById('cns').value = paciente.cns;
+                document.getElementById('data_nascimento').value = paciente.data_nascimento;
+                document.getElementById('altura').value = paciente.altura;
+                document.getElementById('sexo').value = paciente.sexo;
+                document.getElementById('tipo_sang').value = paciente.tipo_sang;
+                document.getElementById('diabetes').value = paciente.diabetes;
+                document.getElementById('tipo_tratamento').value = paciente.tipo_tratamento;
+                document.getElementById('cid').value = paciente.cid;
+                document.getElementById('data_inicio_trat').value = paciente.data_inicio_trat;
+                document.getElementById('data_primeira_dialise_vida').value = paciente.data_primeira_dialise_vida;
+                document.getElementById('escala').value = paciente.escala;
+                document.getElementById('turno_local').value = paciente.turno_local;
+
+                document.getElementById('formAtualizarPaciente').addEventListener('submit', async function(event) {
+                    event.preventDefault();
+
+                    try {
+                        const formData = new FormData(this);
+                        const pacienteAtualizado = {};
+                        formData.forEach((value, key) => {
+                            pacienteAtualizado[key] = value;
+                        });
+
+                        const response = await fetch(`/atualizar_paciente/${pacienteId}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(pacienteAtualizado)
+                        });
+                        const data = await response.json();
+                        alert(data.message);
+                        window.location.href = '/listar_pacientes.html'; // Redireciona para a lista de pacientes após a atualização
+                    } catch (error) {
+                        console.error('Erro ao atualizar paciente:', error);
+                    }
+                });
+            } catch (error) {
+                console.error('Erro ao carregar dados do paciente:', error);
+            }
+        }
+
+        // Carrega os dados do paciente ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            carregarDadosPaciente();
+        });
+    </script>
+</body>
+</html>

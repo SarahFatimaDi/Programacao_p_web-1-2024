@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Resultado do Exame de Sangue</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>        
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center">Resultado do exame de sangue feito toda segunda semana do mês</h1>
+                <form action="/exames_sangue" method="post">
+                    <!-- Campo oculto para armazenar o ID do paciente -->
+                    <input type="hidden" name="pacienteId" value="{{pacienteId}}">
+                    
+                    <div class="mb-3">
+                        <label for="data_resultado" class="form-label">Data do resultado do exame de sangue:</label>
+                        <input type="date" class="form-control" id="data_resultado" name="data_resultado" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ktv" class="form-label">KtV:</label>
+                        <input type="text" class="form-control" id="ktv" name="ktv" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="std_ktv" class="form-label">STD Ktv:</label>
+                        <input type="text" class="form-control" id="std_ktv" name="std_ktv" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ureia_pre" class="form-label">Uréia pré:</label>
+                        <input type="text" class="form-control" id="ureia_pre" name="ureia_pre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ureia" class="form-label">Uréia:</label>
+                        <input type="text" class="form-control" id="ureia" name="ureia" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="hb" class="form-label">Hb:</label>
+                        <input type="text" class="form-control" id="hb" name="hb" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ht" class="form-label">Ht:</label>
+                        <input type="text" class="form-control" id="ht" name="ht" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ferretina" class="form-label">Ferretina:</label>
+                        <input type="text" class="form-control" id="ferretina" name="ferretina" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="sat_tranf" class="form-label">Saturação Transferrina:</label>
+                        <input type="text" class="form-control" id="sat_tranf" name="sat_tranf" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="calcio" class="form-label">Cálcio:</label>
+                        <input type="text" class="form-control" id="calcio" name="calcio" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fosforo" class="form-label">Fósforo:</label>
+                        <input type="text" class="form-control" id="fosforo" name="fosforo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pth" class="form-label">PTH:</label>
+                        <input type="text" class="form-control" id="pth" name="pth" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tgp" class="form-label">TGP:</label>
+                        <input type="text" class="form-control" id="tgp" name="tgp" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="k" class="form-label">K:</label>
+                        <input type="text" class="form-control" id="k" name="k" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="glicose" class="form-label">Glicose:</label>
+                        <input type="text" class="form-control" id="glicose" name="glicose" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="glic_jy" class="form-label">Glicose JY:</label>
+                        <input type="text" class="form-control" id="glic_jy" name="glic_jy" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Adicionar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

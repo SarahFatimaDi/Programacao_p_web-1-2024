@@ -1,0 +1,73 @@
+<!-- listar_pacientes.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Pacientes</title>
+</head>
+<body>
+    <h1>Listar Pacientes</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Convênio</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="pacientes-lista">
+            <!-- Aqui serão inseridos os pacientes via JavaScript -->
+        </tbody>
+    </table>
+    
+    <script>
+        // Função para carregar a lista de pacientes
+        async function carregarPacientes() {
+            try {
+                const response = await fetch('/listar_pacientes');
+                const pacientes = await response.json();
+                
+                const listaPacientes = document.getElementById('pacientes-lista');
+                listaPacientes.innerHTML = '';
+                
+                pacientes.forEach((paciente) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${paciente.id}</td>
+                        <td>${paciente.nome}</td>
+                        <td>${paciente.convenio}</td>
+                        <td>
+                            <a href="/atualizar_paciente.html?id=${paciente.id}">Editar</a> | 
+                            <a href="#" onclick="excluirPaciente(${paciente.id})">Excluir</a>
+                        </td>
+                    `;
+                    listaPacientes.appendChild(tr);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar pacientes:', error);
+            }
+        }
+        
+        // Função para excluir um paciente
+        async function excluirPaciente(id) {
+            try {
+                const response = await fetch(`/excluir_paciente/${id}`, {
+                    method: 'DELETE'
+                });
+                const data = await response.json();
+                alert(data.message);
+                carregarPacientes(); // Recarrega a lista de pacientes após exclusão
+            } catch (error) {
+                console.error('Erro ao excluir paciente:', error);
+            }
+        }
+        
+        // Carrega a lista de pacientes ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            carregarPacientes();
+        });
+    </script>
+</body>
+</html>
